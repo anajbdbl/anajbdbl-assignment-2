@@ -1,4 +1,3 @@
-Flask==3.0.0            # Flask framework 
-matplotlib==3.8.0       # For generating the clustering plot visualizations
-numpy==1.24.0           # For numerical operations and data generation
-gunicorn==20.1.0        # Production server to run Flask applications
+Flask==2.0.1        # Flask framework 
+numpy==1.24.0       # For numerical operations and data generation
+Werkzeug==2.0.3     # Production server to run Flask applications

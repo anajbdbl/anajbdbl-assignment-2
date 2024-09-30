@@ -5,35 +5,35 @@ name: Python application
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
-
-permissions:
-  contents: read
+    branches:
+      - main
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.12'  # Adjust the version as needed
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.6'
 
-    - name: Install dependencies
-      run: |
-        make install  # Install dependencies
+      - name: Install dependencies
+        run: make install
+      
+      - name: Check Flask installation
+        run: flask --version
+      
+      - name: Run Flask server
+        run: |
+          make run &           # Start the Flask server in the background
+          sleep 20             # Wait for 20 seconds to ensure the server starts
 
-    - name: Run the application
-      run: |
-        nohup . venv/bin/python app.py &  # Run the server in the background
-        sleep 5  # Give the server time to start
-
-    - name: Check if the application is running
-      run: |
-        curl --fail http://localhost:3000/  # Change the URL if needed
+      - name: Verify Flask server
+        run: curl --fail http://localhost:3000 || exit 1

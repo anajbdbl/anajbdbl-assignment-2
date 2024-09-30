@@ -1,15 +1,15 @@
 # Install all required dependencies
 # Makefile
 
-.PHONY: install run
-
 install:
-	python3.10 -m venv venv  # Create virtual environment
-	. venv/bin/activate && pip install -r requirements.txt  # Install dependencies
+	pip install -r requirements.txt
 
 run:
-	. venv/bin/activate && python app.py  # Run the application
+	flask run --host=0.0.0.0 --port=3000
 
-# Remove the virtual environment and all its dependencies
+# install:
+# 	python3.10 -m venv venv  # Create virtual environment
+# 	. venv/bin/activate && pip install -r requirements.txt 
+
 clean:
 	rm -rf venv

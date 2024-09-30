@@ -2,41 +2,31 @@
 
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KMeans Clustering Algorithm</title>
-    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>KMeans Clustering Algorithm</h1>
-
-        <!-- Number of Clusters Input -->
-        <label for="clusters">Number of Clusters (k):</label>
-        <input type="number" id="clusters" value="3" min="1" max="10">
-
-        <!-- Initialization Method Dropdown -->
-        <label for="initialization">Initialization Method:</label>
-        <select id="initialization">
+    <h1>KMeans Clustering Algorithm</h1>
+    <div class="controls">
+        <label for="kClusters">Number of Clusters (k):</label>
+        <input type="number" id="kClusters" min="1" max="10" value="3">
+        <label for="initMethod">Initialization Method:</label>
+        <select id="initMethod">
             <option value="random">Random</option>
-            <option value="farthest">Farthest First</option>
+            <option value="farthest_first">Farthest First</option>
             <option value="kmeans++">KMeans++</option>
             <option value="manual">Manual</option>
         </select>
-
-        <!-- Buttons -->
-        <div class="buttons">
-            <button id="step">Step Through KMeans</button>
-            <button id="converge">Run to Convergence</button>
-            <button id="generate">Generate New Dataset</button>
-            <button id="reset">Reset Algorithm</button>
-        </div>
-
-        <!-- Plot Area for KMeans Clustering -->
-        <div id="plot"></div>
+        <br>
+        <button id="generateData">Generate New Dataset</button>
+        <button id="step">Step Through KMeans</button>
+        <button id="converge">Run to Convergence</button>
+        <button id="reset">Reset</button>
     </div>
-
-    <script src="static/script.js"></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <br>
+    <div id="status"></div>
+    <canvas id="chart"></canvas>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
