@@ -76,6 +76,7 @@ button:hover {
 canvas {
     border: 2px solid #66bb6a; 
     border-radius: 8px;
+    padding: 25px;
 }
 
 footer {
