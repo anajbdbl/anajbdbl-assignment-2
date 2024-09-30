@@ -1,0 +1,39 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Python application
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12'  # Adjust the version as needed
+
+    - name: Install dependencies
+      run: |
+        make install  # Install dependencies
+
+    - name: Run the application
+      run: |
+        nohup . venv/bin/python app.py &  # Run the server in the background
+        sleep 5  # Give the server time to start
+
+    - name: Check if the application is running
+      run: |
+        curl --fail http://localhost:3000/  # Change the URL if needed
