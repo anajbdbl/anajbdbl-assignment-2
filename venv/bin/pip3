@@ -1,4 +1,4 @@
-#!/Users/anajuliabortolossi/cs506/anajbdbl-assignment-2/venv/bin/python3.10
+#!/Users/anajuliabortolossi/cs506/anajbdbl-assignment-2/venv/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys

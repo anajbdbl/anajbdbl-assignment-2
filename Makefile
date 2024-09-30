@@ -1,14 +1,14 @@
 # Install all required dependencies
-install:
-	# Create a virtual environment if it doesn't exist and activate it
-	python3 -m venv venv
-	# Install dependencies from requirements.txt
-	venv/bin/pip install -r requirements.txt
+# Makefile
 
-# Run the application on localhost:3000
+.PHONY: install run
+
+install:
+	python -m venv venv  # Create virtual environment
+	. venv/bin/activate && pip install -r requirements.txt  # Install dependencies
+
 run:
-	# Activate the virtual environment and run the Flask application
-	venv/bin/python3 app.py
+	. venv/bin/activate && python app.py  # Run the application
 
 # Remove the virtual environment and all its dependencies
 clean:
