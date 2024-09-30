@@ -4,7 +4,7 @@
 .PHONY: install run
 
 install:
-	python -m venv venv  # Create virtual environment
+	python3.10 -m venv venv  # Create virtual environment
 	. venv/bin/activate && pip install -r requirements.txt  # Install dependencies
 
 run:
